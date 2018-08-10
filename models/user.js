@@ -78,8 +78,8 @@ UserSchema.methods.generateAuthToken = function () {
     const user = this;
     const access = 'auth';
 
-    const token = genToken({_id: this._id, access})
-    // const token = sign(genPayload({_id: this._id, access}),jwt_secret).toString();
+    const token = genToken({_id: this._id, access});
+
     user.tokens.push({access, token});
 
     return user.save().then(() => {

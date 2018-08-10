@@ -6,7 +6,6 @@
 	},
 	"item": [
 		{
-			"_postman_id": "d69f6dad-389e-494d-b3a8-77405530b454",
 			"name": "http://localhost:3000/users/",
 			"event": [
 				{
@@ -31,7 +30,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"ivanruiz\",\n\t\"name\": {\n\t\t\"first\": \"Ivan\"\n\t},\n\t\"password\": \"unapass123\",\n\t\"email\": \"ivanruiz@gmail.com\",\n\t\"role\": \"admin\"\n}"
+					"raw": "{\n\t\"username\": \"ivanruiz1\",\n\t\"name\": {\n\t\t\"first\": \"Ivan\"\n\t},\n\t\"password\": \"unapass123\",\n\t\"email\": \"ivanruiz1@gmail.com\",\n\t\"role\": \"admin\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/users/",
@@ -49,7 +48,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "a67d0e07-ad12-4d2b-94f9-2e1a3b980947",
 			"name": "http://localhost:3000/users/auth",
 			"event": [
 				{
@@ -92,7 +90,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "e40866a7-2ba3-4032-946e-1390fd817e3d",
 			"name": "http://localhost:3000/users/",
 			"request": {
 				"method": "PATCH",
@@ -108,7 +105,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": {\n\t\t\"fist\": \"Alberto\",\n\t\t\"last\": \"Sanchez\"\n\t}\n}"
+					"raw": "{\n\t\"name\": {\n\t\t\"last\": \"Sanchez\"\n\t}\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/users/name/",
@@ -120,6 +117,58 @@
 					"path": [
 						"users",
 						"name",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/users/",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "{{x-auth}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/tableros/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "{{x-auth}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/tableros/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tableros",
 						""
 					]
 				}
