@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "61efb46a-98c1-4315-bd73-91343382b0ba",
+		"name": "TestingClaseMongoose",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "d69f6dad-389e-494d-b3a8-77405530b454",
+			"name": "http://localhost:3000/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "77cda6b6-e92b-4419-9a6e-6caf821cb596",
+						"type": "text/javascript",
+						"exec": [
+							"var token = postman.getResponseHeader('x-auth');",
+							"postman.setEnvironmentVariable('x-auth', token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"ivanruiz\",\n\t\"name\": {\n\t\t\"first\": \"Ivan\"\n\t},\n\t\"password\": \"unapass123\",\n\t\"email\": \"ivanruiz@gmail.com\",\n\t\"role\": \"admin\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "a67d0e07-ad12-4d2b-94f9-2e1a3b980947",
+			"name": "http://localhost:3000/users/auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb00e899-0488-4e0b-98f5-78d3e35b5cb5",
+						"type": "text/javascript",
+						"exec": [
+							"var token = postman.getResponseHeader('x-auth');",
+							"postman.setEnvironmentVariable('x-auth', token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"ivanruiz@gmail.com\",\n\t\"password\": \"unapass123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "e40866a7-2ba3-4032-946e-1390fd817e3d",
+			"name": "http://localhost:3000/users/",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "{{x-auth}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": {\n\t\t\"fist\": \"Alberto\",\n\t\t\"last\": \"Sanchez\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/name/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"name",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

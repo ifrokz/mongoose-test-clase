@@ -1,0 +1,6 @@
+{
+    "rootDir": "./tests/clase/server/",
+    "globals": {
+      "NODE_ENV": "test"
+    }
+}
