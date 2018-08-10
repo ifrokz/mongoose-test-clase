@@ -5,6 +5,7 @@ const {hash, compare, genSalt} = require('bcrypt');
 const {sign, verify} = require('jsonwebtoken');
 const moment = require('moment');
 
+const { genPayload, genToken } = require('./utils/jwt');
 const jwt_secret = 'jwt-salt';
 
 const UserSchema = new mongoose.Schema({
@@ -71,12 +72,14 @@ UserSchema.methods.findSimilarRoles = function () {
     return this.model('Users').find({role: this.role});
 }
 
+
+
 UserSchema.methods.generateAuthToken = function () {
     const user = this;
     const access = 'auth';
 
-    const token = require('./utils/jwt').genToken();
-
+    const token = genToken({_id: this._id, access})
+    // const token = sign(genPayload({_id: this._id, access}),jwt_secret).toString();
     user.tokens.push({access, token});
 
     return user.save().then(() => {
