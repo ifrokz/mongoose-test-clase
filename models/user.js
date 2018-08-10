@@ -5,8 +5,8 @@ const {hash, compare, genSalt} = require('bcrypt');
 const {sign, verify} = require('jsonwebtoken');
 const moment = require('moment');
 
-const { genPayload, genToken } = require('./utils/jwt');
-const jwt_secret = 'jwt-salt';
+const { genPayload, genToken, jwt_secret } = require('./utils/jwt');
+
 
 const UserSchema = new mongoose.Schema({
     username: {

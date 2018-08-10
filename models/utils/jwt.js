@@ -1,5 +1,6 @@
 const moment = require('moment');
 const {sign} = require('jsonwebtoken');
+const jwt_secret = 'jwt-salt';
 
 const genPayload = ({_id, access, expTime}) => {
     const payload = {
@@ -12,11 +13,12 @@ const genPayload = ({_id, access, expTime}) => {
 }
 
 const genToken = ({_id, access, expTime}) => {
-    const token = sign(genPayload({_id, access, expTime}), 'jwt-salt');
+    const token = sign(genPayload({_id, access, expTime}), jwt_secret);
     return token.toString();
 }
 
 module.exports = {
     genPayload,
-    genToken
-}
+    genToken,
+    jwt_secret
+};
