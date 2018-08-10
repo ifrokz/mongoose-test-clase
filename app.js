@@ -2,7 +2,7 @@ const express = require('express'),
     app = express(),
     User = require('./models/user'),
     mongoose = require('./connections/mongoose'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
     _ = require('lodash');
 
 app.use(bodyParser.json());
@@ -137,7 +137,7 @@ app.delete('/users/', autentificacion ,async (req, res) => {
         await User.deleteOne({_id: req.user._id});
         res.send();
     } catch (err) {
-        res.status(400).send();
+        res.status(400).send(err);
     }
 });
 
@@ -155,3 +155,5 @@ app.post('/tableros/',autentificacion, (req, res) => {
 app.listen(3000, () => {
     console.log('http://localhost:3000');
 });
+
+module.exports = app;

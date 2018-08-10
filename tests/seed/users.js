@@ -1,10 +1,15 @@
 import User from '../../models/user';
 import { ObjectID } from "mongodb";
+import { genToken } from '../../models/utils/jwt';
 
-
-const usersData = [
+const IDs = [
+    new ObjectID(),
+    new ObjectID(),
+    new ObjectID()
+]
+export const usersData = [
     {
-        _id: new ObjectID(),
+        _id: IDs[0],
         username: 'ivanruiz',
         name: {
             first: 'Ivan',
@@ -15,12 +20,12 @@ const usersData = [
         tokens: [
             {
                 access: 'auth',
-                token: 'fn3jk2ljf1'
+                token: genToken(IDs[0], 'auth')
             }
         ]
     },
     {
-        _id: new ObjectID(),
+        _id: IDs[1],
         username: 'ivanruiz2',
         name: {
             first: 'Ivan',
@@ -31,12 +36,12 @@ const usersData = [
         tokens: [
             {
                 access: 'auth',
-                 token:'fn3jk2ljf1'
+                token: genToken(IDs[1], 'auth')
             }
         ]
     },
     {
-        _id: new ObjectID(),
+        _id: IDs[2],
         username: 'ivanruiz3',
         name: {
             first: 'Ivan',
@@ -48,19 +53,22 @@ const usersData = [
         tokens: [
             {
                 access: 'auth', 
-                token: 'fn3jk2ljf1'
+                token: genToken(IDs[2], 'auth')
             }
         ]
     }
 ];
 
-const populateUsers = async (done) => {
+export async function populateUsers(done) {
     try {
         await User.remove({});
         await new User(usersData[0]).save();
         await new User(usersData[1]).save();
         await new User(usersData[2]).save();
+        done();
     } catch (err) {
         throw new Error(err);
     }
 }
+
+ 
